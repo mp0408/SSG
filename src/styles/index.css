@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   Theme tokens — RGB triplets so Tailwind can apply opacity.
+   Dark ("night match") is the default brand look.
+   ───────────────────────────────────────────────────────────── */
+:root,
+[data-theme='dark'] {
+  --bg: 5 9 20;
+  --bg-2: 8 14 31;
+  --surface: 12 20 40;
+  --surface-2: 19 30 58;
+  --line: 31 44 76;
+  --ink: 236 241 255;
+  --ink-2: 163 177 210;
+  --ink-3: 108 123 160;
+  --brand: 47 107 255;
+  --brand-ink: 128 172 255;
+  --glow: 56 189 248;
+  --ball: 239 59 78;
+
+  --logo-top: 77 141 255;
+  --logo-bottom: 26 79 214;
+  --logo-keyline: 255 255 255;
+  --logo-keyline-width: 12;
+
+  --grain-opacity: 0.05;
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: 246 247 251;
+  --bg-2: 237 241 249;
+  --surface: 255 255 255;
+  --surface-2: 241 244 250;
+  --line: 221 227 239;
+  --ink: 9 16 36;
+  --ink-2: 70 82 110;
+  --ink-3: 100 111 138;
+  --brand: 29 78 216;
+  --brand-ink: 29 78 216;
+  --glow: 2 132 199;
+  --ball: 214 40 57;
+
+  --logo-top: 56 116 248;
+  --logo-bottom: 21 66 200;
+  --logo-keyline: 255 255 255;
+  --logo-keyline-width: 0;
+
+  --grain-opacity: 0.035;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    @apply bg-bg text-ink antialiased;
+    font-family: theme('fontFamily.sans');
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply min-h-screen bg-bg;
+    font-feature-settings: 'ss01', 'cv11';
+    overflow-x: clip;
+  }
+
+  /* Fine film grain — static, GPU-cheap texture that keeps flat colour from looking digital. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #root {
+    @apply flex min-h-screen flex-col;
+  }
+
+  ::selection {
+    background: rgb(var(--brand) / 0.35);
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand-ink));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  img {
+    @apply select-none;
+  }
+}
+
+@layer components {
+  /* Layout shell — 16px gutters on phones */
+  .shell {
+    @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply relative py-20 sm:py-28 lg:py-32;
+  }
+
+  /* ── Type roles ─────────────────────────────── */
+  .t-display {
+    font-family: theme('fontFamily.display');
+    font-stretch: 72%;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: -0.012em;
+    line-height: 0.9;
+  }
+
+  .t-label {
+    font-family: theme('fontFamily.display');
+    font-stretch: 118%;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .t-serif {
+    font-family: theme('fontFamily.serif');
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  .t-numeric {
+    font-family: theme('fontFamily.display');
+    font-stretch: 80%;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Surfaces ───────────────────────────────── */
+  .card {
+    @apply rounded-3xl border border-line/70 bg-surface;
+  }
+
+  .card-interactive {
+    @apply transition-[transform,border-color,box-shadow] duration-500 ease-out;
+  }
+  @media (hover: hover) {
+    .card-interactive:hover {
+      @apply -translate-y-1 border-brand/40 shadow-lift;
+    }
+  }
+  .card-interactive:active {
+    transform: scale(0.985);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/60 px-3 py-1 text-xs font-medium text-ink-2;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-surface-2;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgb(var(--ink) / 0.05), transparent);
+  }
+
+  /* ── Marquee ────────────────────────────────── */
+  .marquee {
+    @apply flex overflow-hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* ── Hero ball slot (CSS ball shown only if WebGL is unavailable) ── */
+  .ball-slot {
+    position: relative;
+    display: inline-block;
+    flex: none;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 9999px;
+  }
+  .ball-slot::before,
+  .ball-slot::after {
+    content: '';
+    position: absolute;
+    border-radius: 9999px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .ball-slot::before {
+    inset: 0;
+    background: radial-gradient(circle at 34% 30%, #ff8f8f 0, #e0303f 24%, #a3121f 58%, #44050b 100%);
+    box-shadow:
+      inset -0.05em -0.07em 0.12em rgb(0 0 0 / 0.45),
+      0 0.08em 0.4em rgb(var(--glow) / 0.25);
+  }
+  .ball-slot::after {
+    left: -2%;
+    right: -2%;
+    top: 46%;
+    height: 8%;
+    border-top: 0.012em dashed #f4e7c8;
+    border-bottom: 0.012em dashed #f4e7c8;
+    transform: rotate(-24deg);
+  }
+  [data-gl='fail'] .ball-slot::before,
+  [data-gl='fail'] .ball-slot::after {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(180deg, rgb(var(--ink)) 20%, rgb(var(--brand-ink)) 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgb(var(--ink) / 0.35);
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(rgb(var(--ink) / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Logo keyline (white outline on dark, none on light) */
+.logo-ink {
+  stroke: rgb(var(--logo-keyline));
+  stroke-width: var(--logo-keyline-width);
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+/* Theme switch: circular reveal from the toggle (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Scrollbar */
+@media (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line));
+    border: 3px solid rgb(var(--bg));
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--ink-3));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

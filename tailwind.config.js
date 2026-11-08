@@ -1,58 +1,64 @@
 /** @type {import('tailwindcss').Config} */
+
+// Colours are CSS variables (RGB triplets) so one class works in both themes.
+// See src/styles/index.css for the light/dark values.
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
+    container: { center: true },
     extend: {
       colors: {
-        brand: {
-          bg: "#0d1117",
-          surface: "#161b22",
-          elevated: "#1c2333",
-          border: "#30363d",
-          gold: "#f0b429",
-          "gold-dim": "#d4942a",
-          accent: "#58a6ff",
-        },
-        text: {
-          primary: "#f0f6fc",
-          secondary: "#8b949e",
-          muted: "#484f58",
-        },
+        bg: token('bg'),
+        'bg-2': token('bg-2'),
+        surface: token('surface'),
+        'surface-2': token('surface-2'),
+        line: token('line'),
+        ink: token('ink'),
+        'ink-2': token('ink-2'),
+        'ink-3': token('ink-3'),
+        brand: token('brand'),
+        'brand-ink': token('brand-ink'),
+        glow: token('glow'),
+        ball: token('ball'),
       },
       fontFamily: {
-        heading: ["'Space Grotesk'", "sans-serif"],
-        body: ["'Inter'", "sans-serif"],
-        display: ["'Orbitron'", "sans-serif"],
+        sans: ['Geist', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        display: ['Archivo', 'Impact', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        gujarati: ['"Noto Sans Gujarati"', 'sans-serif'],
+      },
+      fontSize: {
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
+      },
+      letterSpacing: {
+        label: '0.18em',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      },
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       boxShadow: {
-        "card": "0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2)",
-        "card-hover": "0 8px 30px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)",
-        "glow-gold": "0 0 20px rgba(240,180,41,0.15)",
-        "modal": "0 16px 70px rgba(0,0,0,0.6)",
-      },
-      animation: {
-        "fade-in": "fadeIn 0.5s ease-out",
-        "slide-up": "slideUp 0.5s ease-out",
-        "border-pulse": "borderPulse 4s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
+        card: '0 1px 0 rgb(var(--ink) / 0.04) inset, 0 20px 40px -24px rgb(0 0 0 / 0.45)',
+        lift: '0 30px 60px -30px rgb(var(--brand) / 0.45)',
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        borderPulse: {
-          "0%, 100%": { borderColor: "rgba(240,180,41,0.15)" },
-          "50%": { borderColor: "rgba(240,180,41,0.4)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
+        marquee: { to: { transform: 'translateX(-100%)' } },
+        'marquee-reverse': { from: { transform: 'translateX(-100%)' }, to: { transform: 'translateX(0)' } },
+        ping: { '75%, 100%': { transform: 'scale(2.4)', opacity: '0' } },
+        shimmer: { to: { transform: 'translateX(100%)' } },
+        'fade-up': { from: { opacity: '0', transform: 'translateY(14px)' }, to: { opacity: '1', transform: 'none' } },
+      },
+      animation: {
+        marquee: 'marquee var(--marquee-duration, 40s) linear infinite',
+        'marquee-reverse': 'marquee-reverse var(--marquee-duration, 40s) linear infinite',
+        ping: 'ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        shimmer: 'shimmer 2.4s ease-in-out infinite',
+        'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
     },
   },

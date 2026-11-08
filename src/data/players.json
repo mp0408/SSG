@@ -1,842 +1,842 @@
 [
   {
-    "id": 14,
-    "name": "Kamlesh Patel",
-    "image": "/84Img/Kamlesh patel  - Kamleshpatel13211@gmail.com Kkpatel.jpg",
-    "occupation": "Business",
-    "team": "UMA Super11",
-    "dob": "1986-08-01",
-    "instagram": "",
-    "mobile": "9979882586"
-  },
-  {
     "id": 1,
+    "slug": "kalpesh-chopada",
     "name": "Kalpesh Chopada",
-    "image": "/84Img/IMG20250315174939 - Kalpesh. Chopda.jpg",
     "occupation": "Embroidery Job Work",
-    "team": "UMA Super11",
-    "dob": "1981-10-18",
+    "mobile": "9016536602",
     "instagram": "",
-    "mobile": "9016536602"
+    "dob": "1981-10-18",
+    "photo": true
   },
   {
     "id": 2,
+    "slug": "sandip-kotadiya",
     "name": "Sandip Kotadiya",
-    "image": "/84Img/sandy.png",
     "occupation": "Business",
-    "team": "UMA Super11",
+    "mobile": "8866192114",
+    "instagram": "https://www.instagram.com/aspen2114",
     "dob": "1993-04-08",
-    "instagram": "https://www.instagram.com/aspen2114?igsh=dGFtbDVkdGQ5MmJp&utm_source=qr",
-    "mobile": "8866192114"
+    "photo": true
   },
   {
     "id": 3,
+    "slug": "patel-lucky",
     "name": "Patel Lucky",
-    "image": "/84Img/IMG_2399 - Lucky Patel.jpeg",
     "occupation": "Business",
-    "team": "UMA Super11",
-    "dob": "1998-09-14",
+    "mobile": "9601061009",
     "instagram": "",
-    "mobile": "9601061009"
+    "dob": "1998-09-14",
+    "photo": true
   },
   {
     "id": 4,
+    "slug": "vipul-rokad",
     "name": "Vipul Rokad",
-    "image": "/84Img/LRM_EXPORT_20191105_113901 - Vipul Rokad.jpg",
     "occupation": "Job",
-    "team": "UMA Super11",
-    "dob": "1990-11-05",
+    "mobile": "9537067446",
     "instagram": "",
-    "mobile": "9537067446"
+    "dob": "1990-11-05",
+    "photo": true
   },
   {
     "id": 5,
+    "slug": "jayesh-sathvara",
     "name": "Jayesh Sathvara",
-    "image": "/84Img/IMG_2918 - Jayesh Sathvara.jpeg",
     "occupation": "Business",
-    "team": "UMA Super11",
+    "mobile": "7802965122",
+    "instagram": "https://www.instagram.com/sathvara2014",
     "dob": "1984-12-24",
-    "instagram": "https://www.instagram.com/sathvara2014?igsh=NWEyOHV4cWswc3pn&utm_source=qr",
-    "mobile": "7802965122"
+    "photo": true
   },
   {
     "id": 6,
+    "slug": "maulik-kavaiya",
     "name": "Maulik Kavaiya",
-    "image": "/84Img/20250115_140345 - OPENMIND DESIGN INC..jpg",
     "occupation": "Designer",
-    "team": "UMA Super11",
+    "mobile": "8905915254",
+    "instagram": "https://www.instagram.com/maulikkavaiya",
     "dob": "1992-01-23",
-    "instagram": "https://www.instagram.com/maulikkavaiya?igsh=anhmYXk1YzM0OHlt",
-    "mobile": "8905915254"
-  },
-  {
-    "id": 13,
-    "name": "Mann Patel",
-    "image": "/84Img/IMG_20251218_221713 - Mann Patel.jpg",
-    "occupation": "Full-Stack Developer",
-    "team": "UMA Super11",
-    "dob": "2004-09-14",
-    "instagram": "",
-    "mobile": "9375811821"
+    "photo": true
   },
   {
     "id": 7,
+    "slug": "chandrakant-gajera",
     "name": "Chandrakant Gajera",
-    "image": "/84Img/IMG_20250329_171757 - chandresh gajera.jpg",
     "occupation": "Job",
-    "team": "UMA Super11",
+    "mobile": "9722227949",
+    "instagram": "https://www.instagram.com/chandreshgajera",
     "dob": "1989-12-06",
-    "instagram": "https://www.instagram.com/chandreshgajera?igsh=MWNiYWg2MHJ3am5vYg%3D%3D&utm_source=qr",
-    "mobile": "9722227949"
+    "photo": true
   },
   {
     "id": 8,
+    "slug": "bhavin-patel",
     "name": "Bhavin Patel",
-    "image": "/84Img/IMG20230813142105 - BHAVIN PATEL.jpg",
     "occupation": "Education Business",
-    "team": "UMA Super11",
-    "dob": "1990-08-04",
+    "mobile": "9979970024",
     "instagram": "",
-    "mobile": "9979970024"
+    "dob": "1990-08-04",
+    "photo": true
   },
   {
     "id": 9,
+    "slug": "pritesh-dobariya",
     "name": "Pritesh Dobariya",
-    "image": "/84Img/IMG_2813 - Pritesh Dobariya.jpeg",
     "occupation": "Job",
-    "team": "UMA Super11",
+    "mobile": "9510555181",
+    "instagram": "https://www.instagram.com/priteshdobariya",
     "dob": "1989-03-22",
-    "instagram": "https://www.instagram.com/priteshdobariya?igsh=OHA3YW43MHRyNG5r&utm_source=qr",
-    "mobile": "9510555181"
+    "photo": true
   },
   {
     "id": 10,
+    "slug": "sachin-panchal",
     "name": "Sachin Panchal",
-    "image": "/84Img/IMG_1825 - sachin panchal.jpeg",
     "occupation": "Media",
-    "team": "UMA Super11",
-    "dob": "1994-05-26",
+    "mobile": "8487096152",
     "instagram": "",
-    "mobile": "8487096152"
+    "dob": "1994-05-26",
+    "photo": true
   },
   {
     "id": 11,
+    "slug": "harsh-trivedi",
     "name": "Harsh Trivedi",
-    "image": "/84Img/IMG_6033 - Harsh Trivedi.jpeg",
     "occupation": "Business",
-    "team": "UMA Super11",
-    "dob": "2001-12-04",
+    "mobile": "7433837099",
     "instagram": "",
-    "mobile": "7433837099"
+    "dob": "2001-12-04",
+    "photo": true
   },
   {
     "id": 12,
+    "slug": "alpesh-patel",
     "name": "Alpesh Patel",
-    "image": "/84Img/IMG_0802 - Divyesh Soijtra.jpeg",
     "occupation": "Business",
-    "team": "UMA Super11",
-    "dob": "1988-08-04",
+    "mobile": "9429758620",
     "instagram": "",
-    "mobile": "9429758620"
+    "dob": "1988-08-04",
+    "photo": true
   },
   {
-    "id": 28,
-    "name": "Akash Sathvara",
-    "image": "/84Img/Screenshot_20251216_120538_WhatsApp - akash sathvara.jpg",
-    "occupation": "Job",
-    "team": "Radhe Rising XI",
-    "dob": "",
+    "id": 13,
+    "slug": "mann-patel",
+    "name": "Mann Patel",
+    "occupation": "Full-Stack Developer",
+    "mobile": "9375811821",
     "instagram": "",
-    "mobile": "8128119966"
+    "dob": "2004-09-14",
+    "photo": true
+  },
+  {
+    "id": 14,
+    "slug": "kamlesh-patel",
+    "name": "Kamlesh Patel",
+    "occupation": "Business",
+    "mobile": "9979882586",
+    "instagram": "",
+    "dob": "1986-08-01",
+    "photo": true
   },
   {
     "id": 15,
+    "slug": "amit-dhameliya",
     "name": "Amit Dhameliya",
-    "image": "/84Img/IMG-20250609-WA0021 - Amit Dhameliya.jpg",
     "occupation": "Garment Manufacturing",
-    "team": "Radhe Rising XI",
+    "mobile": "9723094777",
+    "instagram": "https://www.instagram.com/meet9511",
     "dob": "1990-10-07",
-    "instagram": "https://www.instagram.com/meet9511?igsh=Z28ybXh6MWM1N3Rr",
-    "mobile": "9723094777"
+    "photo": true
   },
   {
     "id": 16,
+    "slug": "ketan-aghara",
     "name": "Ketan Aghara",
-    "image": "/84Img/IMG-20250915-WA0014 - Ketan Aghara.jpg",
     "occupation": "Service",
-    "team": "Radhe Rising XI",
-    "dob": "1991-05-17",
+    "mobile": "8980010028",
     "instagram": "",
-    "mobile": "8980010028"
+    "dob": "1991-05-17",
+    "photo": true
   },
   {
     "id": 17,
+    "slug": "mahesh-kanani",
     "name": "Mahesh Kanani",
-    "image": "/84Img/Screenshot_2025_1221_221056 - mahesh patel.jpg",
     "occupation": "Plastic Business",
-    "team": "Radhe Rising XI",
-    "dob": "1988-05-24",
+    "mobile": "9099144140",
     "instagram": "",
-    "mobile": "9099144140"
+    "dob": "1988-05-24",
+    "photo": true
   },
   {
     "id": 18,
+    "slug": "hardik-sudani",
     "name": "Hardik Sudani",
-    "image": "/84Img/IMG_20250827_124353_500 - Hardik Sudani.webp",
     "occupation": "Hardware Business",
-    "team": "Radhe Rising XI",
-    "dob": "1991-01-30",
+    "mobile": "9712636295",
     "instagram": "",
-    "mobile": "9712636295"
+    "dob": "1991-01-30",
+    "photo": true
   },
   {
     "id": 19,
+    "slug": "bittu-patel",
     "name": "Bittu Patel",
-    "image": "/84Img/bittu.png",
     "occupation": "Business",
-    "team": "Radhe Rising XI",
+    "mobile": "7600906664",
+    "instagram": "https://www.instagram.com/bittupatel_01",
     "dob": "2001-04-01",
-    "instagram": "https://www.instagram.com/bittupatel_01?igsh=MTQ3b3g0OGgxdHc3YQ%3D%3D&utm_source=qr",
-    "mobile": "7600906664"
+    "photo": true
   },
   {
     "id": 20,
+    "slug": "jayesh-patel",
     "name": "Jayesh Patel",
-    "image": "/84Img/Screenshot_2025-05-13-00-17-13-73_92460851df6f172a4592fca41cc2d2e6 - JAYESH PATEL.jpg",
     "occupation": "Job",
-    "team": "Radhe Rising XI",
+    "mobile": "9913010471",
+    "instagram": "https://www.instagram.com/mr_patel_0504",
     "dob": "1991-09-11",
-    "instagram": "https://www.instagram.com/mr_patel_0504?igsh=dHoyMjBmeWdwdW04",
-    "mobile": "9913010471"
+    "photo": true
   },
   {
     "id": 21,
+    "slug": "dipak-patel",
     "name": "Dipak Patel",
-    "image": "/84Img/dipo.png",
     "occupation": "Business",
-    "team": "Radhe Rising XI",
-    "dob": "",
+    "mobile": "9924403800",
     "instagram": "",
-    "mobile": "9924403800"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 22,
+    "slug": "aryan-patel",
     "name": "Aryan Patel",
-    "image": "/84Img/aryan.png",
     "occupation": "Business",
-    "team": "Radhe Rising XI",
+    "mobile": "9913679723",
+    "instagram": "https://www.instagram.com/aryanpatel_1811",
     "dob": "2002-11-18",
-    "instagram": "https://www.instagram.com/aryanpatel_1811?igsh=MXVydXphYXh6bGx6Nw==",
-    "mobile": "9913679723"
+    "photo": true
   },
   {
     "id": 23,
+    "slug": "yash-tarpara",
     "name": "Yash Tarpara",
-    "image": "/84Img/yashtarapara.png",
-    "occupation": "Bussiness",
-    "team": "Radhe Rising XI",
-    "dob": "",
+    "occupation": "Business",
+    "mobile": "8160797217",
     "instagram": "",
-    "mobile": "8160797217"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 24,
+    "slug": "yash-bhambha",
     "name": "Yash Bhambha",
-    "image": "/84Img/IMG_20251215_161833_670 - yash bhambha.jpg",
     "occupation": "Investment Advisor",
-    "team": "Radhe Rising XI",
+    "mobile": "7779069888",
+    "instagram": "",
     "dob": "1995-08-05",
-    "instagram": "https://www.facebook.com/wealthbudsfinancials",
-    "mobile": "7779069888"
+    "photo": true
   },
   {
     "id": 25,
+    "slug": "hardik-sathvara",
     "name": "Hardik Sathvara",
-    "image": "/84Img/eb94f6d6-1786-447f-8e1e-0433c25b1fb9 - Hardik Sathwara.jpeg",
     "occupation": "Civil engineer",
-    "team": "Radhe Rising XI",
-    "dob": "2000-01-22",
+    "mobile": "8320665407",
     "instagram": "",
-    "mobile": "8320665407"
+    "dob": "2000-01-22",
+    "photo": true
   },
   {
     "id": 26,
+    "slug": "thummar-chirag",
     "name": "Thummar Chirag",
-    "image": "/84Img/Clipped_image_20251218_230508 - chirag thummar.png",
     "occupation": "Business",
-    "team": "Radhe Rising XI",
-    "dob": "1989-10-18",
+    "mobile": "9913166628",
     "instagram": "",
-    "mobile": "9913166628"
+    "dob": "1989-10-18",
+    "photo": true
   },
   {
     "id": 27,
+    "slug": "patel-bhavesh",
     "name": "Patel Bhavesh",
-    "image": "/84Img/IMG-20250526-WA0081 - bhavesh patel.jpg",
     "occupation": "Job",
-    "team": "Radhe Rising XI",
-    "dob": "",
+    "mobile": "9638171225",
     "instagram": "",
-    "mobile": "9638171225"
+    "dob": "",
+    "photo": true
   },
   {
-    "id": 42,
-    "name": "Mayur Fadadu",
-    "image": "/84Img/d81c8790-7541-4b82-bee7-4bf5e69cafd7 - Fadadu Mayur.jpeg",
+    "id": 28,
+    "slug": "akash-sathvara",
+    "name": "Akash Sathvara",
     "occupation": "Job",
-    "team": "Lion Legends",
-    "dob": "1989-12-19",
+    "mobile": "8128119966",
     "instagram": "",
-    "mobile": "9725729054"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 29,
+    "slug": "sandip-vataliya",
     "name": "Sandip Vataliya",
-    "image": "/84Img/sandip.png",
     "occupation": "Business",
-    "team": "Lion Legends",
-    "dob": "1993-06-25",
+    "mobile": "7878889262",
     "instagram": "",
-    "mobile": "7878889262"
+    "dob": "1993-06-25",
+    "photo": true
   },
   {
     "id": 30,
+    "slug": "bhatt-vipul",
     "name": "Bhatt Vipul",
-    "image": "/84Img/IMG_20251218_224404 - Vipul Bhatt.jpg",
     "occupation": "Service",
-    "team": "Lion Legends",
-    "dob": "1986-04-12",
+    "mobile": "7043421500",
     "instagram": "",
-    "mobile": "7043421500"
+    "dob": "1986-04-12",
+    "photo": true
   },
   {
     "id": 31,
+    "slug": "rutvik-chaudhary",
     "name": "Rutvik Chaudhary",
-    "image": "/84Img/IMG_5577 - Rutvik Chaudhary.JPG",
     "occupation": "Engineer",
-    "team": "Lion Legends",
+    "mobile": "8200152692",
+    "instagram": "https://www.instagram.com/rut_wick_",
     "dob": "2000-04-19",
-    "instagram": "https://www.instagram.com/rut_wick_?igsh=MWFuN3E5aTI3aG1yYw==",
-    "mobile": "8200152692"
+    "photo": true
   },
   {
     "id": 32,
+    "slug": "ronak-daraji",
     "name": "Ronak Daraji",
-    "image": "/84Img/IMG_1301 - Ronak Darji.JPG",
     "occupation": "",
-    "team": "Lion Legends",
-    "dob": "",
+    "mobile": "8780728276",
     "instagram": "",
-    "mobile": "8780728276"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 33,
+    "slug": "nikhil-s-patel",
     "name": "Nikhil S Patel",
-    "image": "/84Img/nikhil.png",
     "occupation": "Job",
-    "team": "Lion Legends",
-    "dob": "1991-08-19",
+    "mobile": "8980021554",
     "instagram": "",
-    "mobile": "8980021554"
+    "dob": "1991-08-19",
+    "photo": true
   },
   {
     "id": 34,
+    "slug": "nikunj-patel",
     "name": "Nikunj Patel",
-    "image": "/84Img/IMG_20251221_221127 - patel nikunj.jpg",
     "occupation": "Business",
-    "team": "Lion Legends",
-    "dob": "1992-06-16",
+    "mobile": "9978081035",
     "instagram": "",
-    "mobile": "9978081035"
+    "dob": "1992-06-16",
+    "photo": true
   },
   {
     "id": 35,
+    "slug": "haresh-gujarati",
     "name": "Haresh Gujarati",
-    "image": "/84Img/262ae843-41bc-4560-afee-eada514c90f2 - Haresh Gujarati.jpeg",
     "occupation": "Job",
-    "team": "Lion Legends",
-    "dob": "1988-12-14",
+    "mobile": "9376796265",
     "instagram": "",
-    "mobile": "9376796265"
+    "dob": "1988-12-14",
+    "photo": true
   },
   {
     "id": 36,
+    "slug": "palkesh-patel",
     "name": "Palkesh Patel",
-    "image": "/84Img/IMG_20190114_165807 - Palkesh Patel.jpg",
     "occupation": "Hotel",
-    "team": "Lion Legends",
-    "dob": "1989-11-23",
+    "mobile": "9824398955",
     "instagram": "",
-    "mobile": "9824398955"
+    "dob": "1989-11-23",
+    "photo": true
   },
   {
     "id": 37,
+    "slug": "padaliya-ayush",
     "name": "Padaliya Ayush",
-    "image": "/84Img/IMG_20240415_135001 - Ayush Patel.jpg",
     "occupation": "",
-    "team": "Lion Legends",
-    "dob": "",
+    "mobile": "7990161445",
     "instagram": "",
-    "mobile": "7990161445"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 38,
+    "slug": "bhautik-radadiya",
     "name": "Bhautik Radadiya",
-    "image": "/84Img/IMG-20251221-WA0012 - Radadiya Bhautik.jpg",
     "occupation": "Business",
-    "team": "Lion Legends",
+    "mobile": "7046698772",
+    "instagram": "https://www.instagram.com/bhautik_radadiya_14",
     "dob": "1996-03-14",
-    "instagram": "https://www.instagram.com/bhautik_radadiya_14?igsh=N2gxMnNycHY0Mndt&utm_source=qr",
-    "mobile": "7046698772"
+    "photo": true
   },
   {
     "id": 39,
+    "slug": "haresh-ghatala",
     "name": "Haresh Ghatala",
-    "image": "/84Img/WhatsApp Image 2025-12-21 at 5.21.44 PM - Haresh Ghatala.jpeg",
     "occupation": "Job",
-    "team": "Lion Legends",
-    "dob": "1989-04-01",
+    "mobile": "9016938191",
     "instagram": "",
-    "mobile": "9016938191"
+    "dob": "1989-04-01",
+    "photo": true
   },
   {
     "id": 40,
+    "slug": "krunal-patel",
     "name": "Krunal Patel",
-    "image": "/84Img/20251022_154532 - Patel Krunal.jpg",
     "occupation": "Business",
-    "team": "Lion Legends",
-    "dob": "1999-11-08",
+    "mobile": "9727778306",
     "instagram": "",
-    "mobile": "9727778306"
+    "dob": "1999-11-08",
+    "photo": true
   },
   {
     "id": 41,
+    "slug": "jeet-aghera",
     "name": "Jeet Aghera",
-    "image": "/84Img/IMG_2093 - Jeet Aghera.jpeg",
     "occupation": "",
-    "team": "Lion Legends",
-    "dob": "",
+    "mobile": "7862842726",
     "instagram": "",
-    "mobile": "7862842726"
+    "dob": "",
+    "photo": true
   },
   {
-    "id": 56,
-    "name": "Parth Trivedi",
-    "image": "/84Img/IMG-20250223-WA0020 - Parth Trivedi.jpg",
-    "occupation": "Business",
-    "team": "MG Super Strikers",
-    "dob": "1998-06-03",
+    "id": 42,
+    "slug": "mayur-fadadu",
+    "name": "Mayur Fadadu",
+    "occupation": "Job",
+    "mobile": "9725729054",
     "instagram": "",
-    "mobile": "8905876559"
+    "dob": "1989-12-19",
+    "photo": true
   },
   {
     "id": 43,
+    "slug": "vijay-desai",
     "name": "Vijay Desai",
-    "image": "/84Img/vijay  - khodiyar abc1615.jpg",
     "occupation": "Job",
-    "team": "MG Super Strikers",
-    "dob": "1989-03-13",
+    "mobile": "8320594718",
     "instagram": "",
-    "mobile": "8320594718"
+    "dob": "1989-03-13",
+    "photo": true
   },
   {
     "id": 44,
+    "slug": "purvesh-ramani",
     "name": "Purvesh Ramani",
-    "image": "/84Img/20251127_105646 - purvesh ramani.jpg",
     "occupation": "Business",
-    "team": "MG Super Strikers",
-    "dob": "1996-06-01",
+    "mobile": "9408087750",
     "instagram": "",
-    "mobile": "9408087750"
+    "dob": "1996-06-01",
+    "photo": true
   },
   {
     "id": 45,
+    "slug": "hitesh-jayani",
     "name": "Hitesh Jayani",
-    "image": "/84Img/20251210_202637 - hitesh jayani.jpg",
     "occupation": "L&T Switchgear Service",
-    "team": "MG Super Strikers",
-    "dob": "1988-03-01",
+    "mobile": "9687660654",
     "instagram": "",
-    "mobile": "9687660654"
+    "dob": "1988-03-01",
+    "photo": true
   },
   {
     "id": 46,
+    "slug": "darshan-patel",
     "name": "Darshan Patel",
-    "image": "/84Img/IMG_20251214_124705 - Darshan patel.jpg",
     "occupation": "Government (India Post)",
-    "team": "MG Super Strikers",
+    "mobile": "9624246736",
+    "instagram": "https://www.instagram.com/dvpatel2411",
     "dob": "1993-11-24",
-    "instagram": "https://www.instagram.com/dvpatel2411?igsh=MWJ0Z21tbnE0d2o5OA==",
-    "mobile": "9624246736"
+    "photo": true
   },
   {
     "id": 47,
+    "slug": "gaurav-savaliya",
     "name": "Gaurav Savaliya",
-    "image": "/84Img/IMG_4538 - Gaurav Savaliya.jpeg",
     "occupation": "Business",
-    "team": "MG Super Strikers",
+    "mobile": "9924306167",
+    "instagram": "https://www.instagram.com/gauravsavaliya7774",
     "dob": "2002-09-19",
-    "instagram": "https://www.instagram.com/gauravsavaliya7774?igsh=MWc3cDUweTg0dm50eA%3D%3D&utm_source=qr",
-    "mobile": "9924306167"
+    "photo": true
   },
   {
     "id": 48,
+    "slug": "kalpesh-pipaliya",
     "name": "Kalpesh Pipaliya",
-    "image": "/84Img/IMG-20251218-WA0005 - Kalpesh Pipaliya.jpg",
     "occupation": "Job",
-    "team": "MG Super Strikers",
-    "dob": "1987-11-10",
+    "mobile": "9727395653",
     "instagram": "",
-    "mobile": "9727395653"
+    "dob": "1987-11-10",
+    "photo": true
   },
   {
     "id": 49,
+    "slug": "mayur-vadadoriya",
     "name": "Mayur Vadadoriya",
-    "image": "/84Img/49f6fa99-44f3-4ab7-a841-1ea5d039bbc6 - mayur vadadoriya.jpeg",
     "occupation": "Job",
-    "team": "MG Super Strikers",
-    "dob": "1991-07-16",
+    "mobile": "9924274513",
     "instagram": "",
-    "mobile": "9924274513"
+    "dob": "1991-07-16",
+    "photo": true
   },
   {
     "id": 50,
+    "slug": "sanjay-trivedi",
     "name": "Sanjay Trivedi",
-    "image": "/84Img/sanjaytri.png",
     "occupation": "",
-    "team": "MG Super Strikers",
-    "dob": "",
+    "mobile": "9723567492",
     "instagram": "",
-    "mobile": "9723567492"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 51,
+    "slug": "rajesh-sachani",
     "name": "Rajesh Sachani",
-    "image": "/84Img/20251022_100339 - Rajesh Sachani.jpg",
     "occupation": "Job",
-    "team": "MG Super Strikers",
-    "dob": "1991-07-20",
+    "mobile": "8866191538",
     "instagram": "",
-    "mobile": "8866191538"
+    "dob": "1991-07-20",
+    "photo": true
   },
   {
     "id": 52,
+    "slug": "dipesh-gajera",
     "name": "Dipesh Gajera",
-    "image": "/84Img/dipeshv.png",
     "occupation": "",
-    "team": "MG Super Strikers",
-    "dob": "",
+    "mobile": "9978520637",
     "instagram": "",
-    "mobile": "9978520637"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 53,
+    "slug": "harsh-patel",
     "name": "Harsh Patel",
-    "image": "/84Img/20251102_120721 - Harsh Patel.jpg",
     "occupation": "Business",
-    "team": "MG Super Strikers",
+    "mobile": "8866451597",
+    "instagram": "https://www.instagram.com/harshpatel_gj02",
     "dob": "1998-08-20",
-    "instagram": "https://www.instagram.com/harshpatel_gj02?igsh=NjNjZnk1Yjh6d2J0",
-    "mobile": "8866451597"
+    "photo": true
   },
   {
     "id": 54,
+    "slug": "bhavesh-trivedi",
     "name": "Bhavesh Trivedi",
-    "image": "/84Img/bhaveshtri.png",
     "occupation": "",
-    "team": "MG Super Strikers",
-    "dob": "",
+    "mobile": "9099037533",
     "instagram": "",
-    "mobile": "9099037533"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 55,
+    "slug": "thummar-kalp",
     "name": "Thummar Kalp",
-    "image": "/84Img/kalp.png",
     "occupation": "Study",
-    "team": "MG Super Strikers",
-    "dob": "",
+    "mobile": "9712973372",
     "instagram": "",
-    "mobile": "9712973372"
+    "dob": "",
+    "photo": true
   },
   {
-    "id": 70,
-    "name": "Chandresh Pansuriya",
-    "image": "/84Img/IMG_5278 - Chandresh Pansuriya.jpeg",
-    "occupation": "Software Development",
-    "team": "CP Warriors",
-    "dob": "1984-12-09",
+    "id": 56,
+    "slug": "parth-trivedi",
+    "name": "Parth Trivedi",
+    "occupation": "Business",
+    "mobile": "8905876559",
     "instagram": "",
-    "mobile": "8980255481"
+    "dob": "1998-06-03",
+    "photo": true
   },
   {
     "id": 57,
+    "slug": "nirav-thummar",
     "name": "Nirav Thummar",
-    "image": "/84Img/niravthummar.png",
     "occupation": "Business",
-    "team": "CP Warriors",
-    "dob": "1985-06-29",
+    "mobile": "9712973372",
     "instagram": "",
-    "mobile": "9712973372"
+    "dob": "1985-06-29",
+    "photo": true
   },
   {
     "id": 58,
+    "slug": "hiren-sudani",
     "name": "Hiren Sudani",
-    "image": "/84Img/IMG_0001 - hiren sudani.jpeg",
     "occupation": "Business",
-    "team": "CP Warriors",
-    "dob": "1993-12-01",
+    "mobile": "7405044090",
     "instagram": "",
-    "mobile": "7405044090"
+    "dob": "1993-12-01",
+    "photo": true
   },
   {
     "id": 59,
+    "slug": "padaliya-pujan",
     "name": "Padaliya Pujan",
-    "image": "/84Img/IMG_20250627_235917_720 (2) - Pujan Padaliya.webp",
     "occupation": "Business",
-    "team": "CP Warriors",
+    "mobile": "8460384858",
+    "instagram": "https://www.instagram.com/pujan_patel_0024",
     "dob": "2006-09-24",
-    "instagram": "https://www.instagram.com/pujan_patel_0024?igsh=MWR2c2QwanhzaXNmdQ==",
-    "mobile": "8460384858"
+    "photo": true
   },
   {
     "id": 60,
+    "slug": "lalji-vora",
     "name": "Lalji Vora",
-    "image": "/84Img/SIRV2048 - Lalji Vora.JPG",
     "occupation": "Job",
-    "team": "CP Warriors",
-    "dob": "1988-06-01",
+    "mobile": "9924588870",
     "instagram": "",
-    "mobile": "9924588870"
+    "dob": "1988-06-01",
+    "photo": true
   },
   {
     "id": 61,
-    "name": "Naman",
-    "image": "/84Img/IMG_3890 - Naman Vekariya.jpg",
+    "slug": "naman-vekariya",
+    "name": "Naman Vekariya",
     "occupation": "Study",
-    "team": "CP Warriors",
-    "dob": "2007-09-18",
+    "mobile": "9016980979",
     "instagram": "",
-    "mobile": "9016980979"
+    "dob": "2007-09-18",
+    "photo": true
   },
   {
     "id": 62,
+    "slug": "hardik-patel",
     "name": "Hardik Patel",
-    "image": "/84Img/DSC_0314 - Hardik Patel.JPG",
     "occupation": "Digital Marketing",
-    "team": "CP Warriors",
+    "mobile": "7990681019",
+    "instagram": "https://www.instagram.com/hardik8546",
     "dob": "1983-10-28",
-    "instagram": "https://www.instagram.com/hardik8546?igsh=MWxkbmFzdHM3bDJzNg==",
-    "mobile": "7990681019"
+    "photo": true
   },
   {
     "id": 63,
+    "slug": "krunal-kothiya",
     "name": "Krunal Kothiya",
-    "image": "/84Img/krunal.png",
     "occupation": "",
-    "team": "CP Warriors",
-    "dob": "2003-09-19",
+    "mobile": "8401719903",
     "instagram": "",
-    "mobile": "8401719903"
+    "dob": "2003-09-19",
+    "photo": true
   },
   {
     "id": 64,
+    "slug": "kishan-kothiya",
     "name": "Kishan Kothiya",
-    "image": "/84Img/e38ef4cb-2cc4-4320-b898-ec3d89e344c6 - KRUNAL KOTHIYA.jpeg",
     "occupation": "",
-    "team": "CP Warriors",
-    "dob": "",
+    "mobile": "6352668335",
     "instagram": "",
-    "mobile": "6352668335"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 65,
+    "slug": "naresh-panchal",
     "name": "Naresh Panchal",
-    "image": "/84Img/Screenshot_20251220-220456.Photos - Naresh Panchal.png",
     "occupation": "Marketing",
-    "team": "CP Warriors",
-    "dob": "1990-08-16",
+    "mobile": "9512460033",
     "instagram": "",
-    "mobile": "9512460033"
+    "dob": "1990-08-16",
+    "photo": true
   },
   {
     "id": 66,
+    "slug": "rajesh-thummar",
     "name": "Rajesh Thummar",
-    "image": "/84Img/rajesh.png",
     "occupation": "Furniture",
-    "team": "CP Warriors",
-    "dob": "1980-03-03",
+    "mobile": "9624238088",
     "instagram": "",
-    "mobile": "9624238088"
+    "dob": "1980-03-03",
+    "photo": true
   },
   {
     "id": 67,
+    "slug": "nikunj-sorathiya",
     "name": "Nikunj Sorathiya",
-    "image": "/84Img/IMG-20251212-WA0008 - SORATHIYA NIKUNJ.jpg",
     "occupation": "",
-    "team": "CP Warriors",
-    "dob": "",
+    "mobile": "9099420082",
     "instagram": "",
-    "mobile": "9099420082"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 68,
+    "slug": "ashish-joshi",
     "name": "Ashish Joshi",
-    "image": "/84Img/ashishjo.png",
     "occupation": "Pvt Job (JK Tyre)",
-    "team": "CP Warriors",
-    "dob": "1988-08-26",
+    "mobile": "9998727683",
     "instagram": "",
-    "mobile": "9998727683"
+    "dob": "1988-08-26",
+    "photo": true
   },
   {
     "id": 69,
+    "slug": "hiren-m-korta",
     "name": "Hiren M Korta",
-    "image": "/84Img/IMG-20240720-WA0001 - Er Hiren Korat.jpg",
     "occupation": "Civil Engineering",
-    "team": "CP Warriors",
-    "dob": "1991-01-02",
+    "mobile": "9537655546",
     "instagram": "",
-    "mobile": "9537655546"
+    "dob": "1991-01-02",
+    "photo": true
   },
   {
-    "id": 84,
-    "name": "Parvadiya Jayendra",
-    "image": "/84Img/7e957d88-9d7c-402a-bea3-573e69d44534 - Nayan Viroja.jpeg",
-    "occupation": "Business",
-    "team": "Rishiv Kings",
-    "dob": "1997-09-14",
-    "instagram": "https://www.instagram.com/jayendra__patel__407_?igsh=MTNxYndsMjB1ZmRldw%3D%3D&utm_source=qr",
-    "mobile": "8155955958"
+    "id": 70,
+    "slug": "chandresh-pansuriya",
+    "name": "Chandresh Pansuriya",
+    "occupation": "Software Development",
+    "mobile": "8980255481",
+    "instagram": "",
+    "dob": "1984-12-09",
+    "photo": true
   },
   {
     "id": 71,
+    "slug": "divyesh-sojitra",
     "name": "Divyesh Sojitra",
-    "image": "/84Img/IMG_3641 - Divyesh Soijtra.jpeg",
     "occupation": "Photography",
-    "team": "Rishiv Kings",
+    "mobile": "8488886100",
+    "instagram": "https://www.instagram.com/divyeshsoijtra",
     "dob": "1991-11-19",
-    "instagram": "https://www.instagram.com/divyeshsoijtra?igsh=NWdyeWh1bXlyYjgw&utm_source=qr",
-    "mobile": "8488886100"
+    "photo": true
   },
   {
     "id": 72,
+    "slug": "tirth-panchal",
     "name": "Tirth Panchal",
-    "image": "/84Img/tirthpanchal.png",
     "occupation": "Job",
-    "team": "Rishiv Kings",
+    "mobile": "9714114505",
+    "instagram": "https://www.instagram.com/panchal__2184",
     "dob": "2005-11-29",
-    "instagram": "https://www.instagram.com/panchal__2184?igsh=MTdqN2lwODFqejg3bw==",
-    "mobile": "9714114505"
+    "photo": true
   },
   {
     "id": 73,
+    "slug": "ajay-vyas",
     "name": "Ajay Vyas",
-    "image": "/84Img/IMG-20250629-WA0017 - Ajay Vyas.jpg",
     "occupation": "Job",
-    "team": "Rishiv Kings",
-    "dob": "1983-04-15",
+    "mobile": "9825889337",
     "instagram": "",
-    "mobile": "9825889337"
+    "dob": "1983-04-15",
+    "photo": true
   },
   {
     "id": 74,
+    "slug": "nayan-viroja",
     "name": "Nayan Viroja",
-    "image": "/84Img/IMG_3636 - Nayan Viroja.jpeg",
     "occupation": "Construction",
-    "team": "Rishiv Kings",
+    "mobile": "9712147054",
+    "instagram": "https://www.instagram.com/nayan.viroja",
     "dob": "2002-11-06",
-    "instagram": "https://www.instagram.com/nayan.viroja?igsh=MTJ4NGVsbHlyeWU1&utm_source=qr",
-    "mobile": "9712147054"
+    "photo": true
   },
   {
     "id": 75,
+    "slug": "ravi-mungalpara",
     "name": "Ravi Mungalpara",
-    "image": "/84Img/Screenshot_20251218_224108_Gallery - ravi mungalpara.jpg",
     "occupation": "Software Engineer",
-    "team": "Rishiv Kings",
-    "dob": "1991-08-25",
+    "mobile": "9099508355",
     "instagram": "",
-    "mobile": "9099508355"
+    "dob": "1991-08-25",
+    "photo": true
   },
   {
     "id": 76,
+    "slug": "vandit-prajapati",
     "name": "Vandit Prajapati",
-    "image": "/84Img/IMG-20230602-WA0027 - Vandit Prajapati.jpg",
     "occupation": "",
-    "team": "Rishiv Kings",
-    "dob": "",
+    "mobile": "8238008485",
     "instagram": "",
-    "mobile": "8238008485"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 77,
+    "slug": "paresh-vekariya",
     "name": "Paresh Vekariya",
-    "image": "/84Img/PHOTO-2025-12-17-08-54-24 - Naman Vekariya.jpg",
     "occupation": "Business",
-    "team": "Rishiv Kings",
-    "dob": "1981-06-12",
+    "mobile": "9924595564",
     "instagram": "",
-    "mobile": "9924595564"
+    "dob": "1981-06-12",
+    "photo": true
   },
   {
     "id": 78,
+    "slug": "arpan-parasaniya",
     "name": "Arpan Parasaniya",
-    "image": "/84Img/IMG-20251221-WA0029 - Amit Dhameliya.jpg",
     "occupation": "Business",
-    "team": "Rishiv Kings",
-    "dob": "1995-02-06",
+    "mobile": "8000958585",
     "instagram": "",
-    "mobile": "8000958585"
+    "dob": "1995-02-06",
+    "photo": true
   },
   {
     "id": 79,
+    "slug": "paresh-patel",
     "name": "Paresh Patel",
-    "image": "/84Img/IMG-20221221-WA0020 - Paresh Patel.jpg",
     "occupation": "Business",
-    "team": "Rishiv Kings",
-    "dob": "1992-01-26",
+    "mobile": "9429511928",
     "instagram": "",
-    "mobile": "9429511928"
+    "dob": "1992-01-26",
+    "photo": true
   },
   {
     "id": 80,
+    "slug": "mayur-patel",
     "name": "Mayur Patel",
-    "image": "/84Img/mayur.png",
     "occupation": "Dog grooming",
-    "team": "Rishiv Kings",
+    "mobile": "9574112975",
+    "instagram": "https://www.instagram.com/ma.yur4391",
     "dob": "1990-05-05",
-    "instagram": "https://www.instagram.com/ma.yur4391?igsh=eGxjd3Jzd2J1bDV4",
-    "mobile": "9574112975"
+    "photo": true
   },
   {
     "id": 81,
+    "slug": "dineshkumar-patel",
     "name": "DineshKumar Patel",
-    "image": "/84Img/IMG_20251224_232025 - Mann Patel.jpg",
     "occupation": "Insurance Advisor",
-    "team": "Rishiv Kings",
-    "dob": "01-06-1973",
+    "mobile": "9375174767",
     "instagram": "",
-    "mobile": "9375174767"
+    "dob": "01-06-1973",
+    "photo": true
   },
   {
     "id": 82,
+    "slug": "kuldip-vaghasia",
     "name": "Kuldip Vaghasia",
-    "image": "/84Img/kuldip.png",
     "occupation": "",
-    "team": "Rishiv Kings",
-    "dob": "",
+    "mobile": "9687126813",
     "instagram": "",
-    "mobile": "9687126813"
+    "dob": "",
+    "photo": true
   },
   {
     "id": 83,
+    "slug": "mihir-khunt",
     "name": "Mihir Khunt",
-    "image": "/84Img/khunt.png",
     "occupation": "Accountant",
-    "team": "Rishiv Kings",
-    "dob": "2001-06-26",
+    "mobile": "",
     "instagram": "",
-    "mobile": ""
+    "dob": "2001-06-26",
+    "photo": true
+  },
+  {
+    "id": 84,
+    "slug": "parvadiya-jayendra",
+    "name": "Parvadiya Jayendra",
+    "occupation": "Business",
+    "mobile": "8155955958",
+    "instagram": "https://www.instagram.com/jayendra__patel__407_",
+    "dob": "1997-09-14",
+    "photo": true
   }
 ]

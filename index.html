@@ -1,23 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="public/teamlogo/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0118" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>SSG Premier League · Season 3 — Coming Soon</title>
     <meta
       name="description"
-      content="SSGPL Cricket Tournament Season 2 — The most electrifying corporate cricket tournament. 6 elite teams, 84 warriors, one trophy. April 26, 2026."
+      content="SSG Premier League by Satva Shiv Gold Yuva Mandal, Ahmedabad. Season 3 is coming soon — meet the players, the teams, the partners and relive every season."
     />
-    <link rel="apple-touch-icon" href="public/teamlogo/favicon.ico" />
+    <meta name="theme-color" content="#050914" />
+    <meta name="color-scheme" content="dark light" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SSG Premier League" />
+    <meta property="og:title" content="SSG Premier League · Season 3 — Coming Soon" />
+    <meta property="og:description" content="Where business meets the boundary. Meet the players, teams and partners of SSGPL." />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Apply the saved theme before first paint to avoid a flash. -->
+    <script>
+      (function () {
+        var theme = 'dark';
+        try {
+          var saved = localStorage.getItem('ssgpl-theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch (e) {}
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Geist:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap"
     />
-    <title>SSGPL Cricket Tournament |Season 2</title>
+    <!-- Gujarati: only the glyphs used on the site are downloaded. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@600&display=swap&text=સત્વ શિવ ગોલ્ડ યુવા મંડળ આયોજિત"
+    />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>SSG Premier League needs JavaScript enabled to run.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

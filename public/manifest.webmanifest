@@ -1,0 +1,14 @@
+{
+  "name": "SSG Premier League",
+  "short_name": "SSGPL",
+  "description": "Season hub, players network, teams, sponsors and gallery of the SSG Premier League.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050914",
+  "theme_color": "#050914",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
