@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { useTheme } from '../../hooks/useTheme';
-import { cn } from '../../lib/cn';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './heroShader';
 
 function compile(gl, type, source) {
@@ -8,7 +8,7 @@ function compile(gl, type, source) {
   gl.shaderSource(shader, source);
   gl.compileShader(shader);
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    if (import.meta.env.DEV) console.error(gl.getShaderInfoLog(shader));
+    if (process.env.NODE_ENV !== 'production') console.error(gl.getShaderInfoLog(shader));
     gl.deleteShader(shader);
     return null;
   }
@@ -26,7 +26,7 @@ function createProgram(gl) {
   gl.deleteShader(vertex);
   gl.deleteShader(fragment);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    if (import.meta.env.DEV) console.error(gl.getProgramInfoLog(program));
+    if (process.env.NODE_ENV !== 'production') console.error(gl.getProgramInfoLog(program));
     return null;
   }
   return program;
@@ -35,51 +35,29 @@ function createProgram(gl) {
 const easeOutBack = (t) => 1 + 2.70158 * Math.pow(t - 1, 3) + 1.70158 * Math.pow(t - 1, 2);
 
 /**
- * Full-bleed WebGL background for the hero. The ball is drawn wherever
- * `anchorRef` sits in the layout, so typography and 3D stay aligned at every
- * breakpoint. Reports 'on' | 'fail' through onStatus.
- *
- * Performance: capped DPR, render-scale that drops automatically on slow
- * devices, paused when off-screen or the tab is hidden, single static frame
- * for prefers-reduced-motion.
+ * The hero's "0": a CSS ball first, upgraded to a small WebGL ball when the device can.
+ * Canvas covers only the ball and its halo. Resolution drops itself on slow
+ * devices, and it stops rendering off screen, in hidden tabs and for reduced motion.
  */
-export default function HeroCanvas({ anchorRef, onStatus, className }) {
+export default function HeroBall() {
   const hostRef = useRef(null);
-  const { theme } = useTheme();
-  const themeTarget = useRef(theme === 'light' ? 1 : 0);
-  const invalidateRef = useRef(() => {});
-  const onStatusRef = useRef(onStatus);
-
-  useEffect(() => {
-    onStatusRef.current = onStatus;
-  }, [onStatus]);
-
-  useEffect(() => {
-    themeTarget.current = theme === 'light' ? 1 : 0;
-    invalidateRef.current();
-  }, [theme]);
+  const [status, setStatus] = useState('pending');
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = document.createElement('canvas');
-    canvas.className = 'absolute inset-0 size-full opacity-0 transition-opacity duration-700';
+    canvas.className = 'absolute inset-0 size-full opacity-0 transition-opacity duration-500';
     host.appendChild(canvas);
 
-    const gl = canvas.getContext('webgl', {
-      alpha: false,
-      antialias: false,
-      depth: false,
-      stencil: false,
-      powerPreference: 'high-performance',
-    });
+    const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
     const program = gl && createProgram(gl);
     if (!gl || !program) {
       canvas.remove();
-      onStatusRef.current?.('fail');
       return undefined;
     }
 
     gl.useProgram(program);
+    gl.clearColor(0, 0, 0, 0);
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
@@ -88,25 +66,15 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
     gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
 
     const uniform = (name) => gl.getUniformLocation(program, name);
-    const u = {
-      resolution: uniform('uResolution'),
-      time: uniform('uTime'),
-      theme: uniform('uTheme'),
-      ball: uniform('uBall'),
-      tilt: uniform('uTilt'),
-      spin: uniform('uSpin'),
-    };
+    const u = { resolution: uniform('uResolution'), scale: uniform('uScale'), tilt: uniform('uTilt'), spin: uniform('uSpin') };
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(pointer: fine)').matches;
-    const maxDpr = finePointer ? 1.75 : 1.5;
-    let quality = finePointer ? 1 : 0.8;
-    let ratio = 1;
-    const ball = { x: 0, y: 0, r: 0 };
+    let quality = 1;
 
     const measure = () => {
       const rect = host.getBoundingClientRect();
-      ratio = Math.min(window.devicePixelRatio || 1, maxDpr) * quality;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2) * quality;
       const width = Math.max(1, Math.round(rect.width * ratio));
       const height = Math.max(1, Math.round(rect.height * ratio));
       if (canvas.width !== width || canvas.height !== height) {
@@ -115,19 +83,11 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
       }
       gl.viewport(0, 0, width, height);
       gl.uniform2f(u.resolution, width, height);
-      const anchor = anchorRef.current?.getBoundingClientRect();
-      if (anchor?.width) {
-        ball.x = (anchor.left + anchor.width / 2 - rect.left) * ratio;
-        ball.y = (rect.bottom - (anchor.top + anchor.height / 2)) * ratio;
-        ball.r = (anchor.width / 2) * ratio;
-      }
     };
 
     const start = performance.now();
     let last = start;
-    let time = 0;
     let spin = 0;
-    let themeValue = themeTarget.current;
     const tilt = { x: 0, y: 0 };
     const tiltTarget = { x: 0, y: 0 };
     let frame = 0;
@@ -140,36 +100,30 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
       frame = 0;
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      const intro = reduceMotion ? 1 : Math.min(1, (now - start) / 1500);
-      if (!reduceMotion) {
-        time += dt;
-        spin += dt * (0.85 + (1 - intro) * 10);
-      }
+      const intro = reduceMotion ? 1 : Math.min(1, (now - start) / 1100);
+      if (!reduceMotion) spin += dt * (0.85 + (1 - intro) * 9);
       const follow = Math.min(1, dt * 4);
       tilt.x += (tiltTarget.x - tilt.x) * follow;
       tilt.y += (tiltTarget.y - tilt.y) * follow;
-      themeValue += (themeTarget.current - themeValue) * Math.min(1, dt * 7 || 1);
-      if (reduceMotion) themeValue = themeTarget.current;
 
-      gl.uniform1f(u.time, time);
-      gl.uniform1f(u.theme, themeValue);
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform1f(u.spin, spin);
+      gl.uniform1f(u.scale, easeOutBack(intro));
       gl.uniform2f(u.tilt, tilt.x, tilt.y);
-      gl.uniform3f(u.ball, ball.x, ball.y, ball.r * easeOutBack(intro));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
 
       if (!ready) {
         ready = true;
         canvas.style.opacity = '1';
-        onStatusRef.current?.('on');
+        setStatus('on');
       }
 
-      // Adaptive resolution: if most of the last 90 frames were slow, render fewer pixels.
+      // Adaptive resolution: if many of the last 60 frames were slow, render fewer pixels.
       if (!reduceMotion && quality > 0.5) {
         sampled += 1;
-        if (dt > 0.026) slow += 1;
-        if (sampled === 90) {
-          if (slow > 35) {
+        if (dt > 0.024) slow += 1;
+        if (sampled === 60) {
+          if (slow > 20) {
             quality = Math.max(0.5, quality * 0.75);
             measure();
           }
@@ -178,8 +132,7 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
         }
       }
 
-      const settling = Math.abs(themeTarget.current - themeValue) > 0.002 || intro < 1;
-      if (visible && !document.hidden && (!reduceMotion || settling)) frame = requestAnimationFrame(render);
+      if (visible && !document.hidden && (!reduceMotion || intro < 1)) frame = requestAnimationFrame(render);
     };
 
     const invalidate = () => {
@@ -188,15 +141,12 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
         frame = requestAnimationFrame(render);
       }
     };
-    invalidateRef.current = invalidate;
 
-    const onResize = () => {
+    const resizeObserver = new ResizeObserver(() => {
       measure();
       invalidate();
-    };
-    const resizeObserver = new ResizeObserver(onResize);
+    });
     resizeObserver.observe(host);
-    if (anchorRef.current) resizeObserver.observe(anchorRef.current);
 
     const intersection = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -210,8 +160,6 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
     const onPointer = (event) => {
       tiltTarget.x = (event.clientX / window.innerWidth - 0.5) * 0.5;
       tiltTarget.y = (event.clientY / window.innerHeight - 0.5) * 0.35;
-      if (reduceMotion) return;
-      invalidate();
     };
     if (finePointer && !reduceMotion) window.addEventListener('pointermove', onPointer, { passive: true });
 
@@ -219,17 +167,16 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
       event.preventDefault();
       cancelAnimationFrame(frame);
       frame = 0;
-      onStatusRef.current?.('fail');
+      canvas.style.opacity = '0';
+      setStatus('pending');
     };
     canvas.addEventListener('webglcontextlost', onLost);
 
-    document.fonts?.ready.then(onResize);
     measure();
     invalidate();
 
     return () => {
       cancelAnimationFrame(frame);
-      invalidateRef.current = () => {};
       resizeObserver.disconnect();
       intersection.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
@@ -240,7 +187,13 @@ export default function HeroCanvas({ anchorRef, onStatus, className }) {
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       canvas.remove();
     };
-  }, [anchorRef]);
+  }, []);
 
-  return <div ref={hostRef} aria-hidden className={cn('absolute inset-0 overflow-hidden', className)} />;
+  return (
+    <span data-gl={status} className="ball-slot mr-[0.03em]">
+      <span className="ball-orbit" />
+      <span className="ball-orbit" />
+      <span ref={hostRef} className="absolute -inset-1/4" />
+    </span>
+  );
 }

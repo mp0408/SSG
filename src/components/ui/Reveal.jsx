@@ -1,29 +1,20 @@
-import { motion } from 'framer-motion';
-import { EASE_OUT, VIEWPORT_ONCE, stagger } from '../../lib/motion';
-
-/** Fades + lifts content into view once. Keep distances small — motion should feel expensive, not busy. */
-export default function Reveal({ as = 'div', delay = 0, y = 18, className, children, ...rest }) {
-  const Component = motion[as];
+/**
+ * Scroll entrances, driven by CSS and one shared observer (see MotionObserver.jsx).
+ * These are plain elements, so they work inside Server Components and cost no JS per item.
+ */
+export default function Reveal({ as: Tag = 'div', delay = 0, className, style, children, ...rest }) {
   return (
-    <Component
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={VIEWPORT_ONCE}
-      transition={{ duration: 0.75, delay, ease: EASE_OUT }}
-      {...rest}
-    >
+    <Tag data-reveal="" className={className} style={delay ? { ...style, '--d': `${Math.round(delay * 1000)}ms` } : style} {...rest}>
       {children}
-    </Component>
+    </Tag>
   );
 }
 
-/** Container that staggers children using the `rise` variant (see lib/motion). */
-export function Stagger({ as = 'div', gap, delay, className, children, ...rest }) {
-  const Component = motion[as];
+/** Container whose direct children enter one after another. */
+export function Stagger({ as: Tag = 'div', gap, className, style, children, ...rest }) {
   return (
-    <Component className={className} variants={stagger(gap, delay)} initial="hidden" whileInView="show" viewport={VIEWPORT_ONCE} {...rest}>
+    <Tag data-stagger="" className={className} style={gap ? { ...style, '--gap': `${Math.round(gap * 1000)}ms` } : style} {...rest}>
       {children}
-    </Component>
+    </Tag>
   );
 }

@@ -1,4 +1,3 @@
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import Hero from '../features/home/Hero';
 import StatsSection from '../features/home/StatsSection';
 import ChampionsSection from '../features/home/ChampionsSection';
@@ -8,8 +7,7 @@ import FranchisesSection from '../features/home/FranchisesSection';
 import CommitteeSection from '../features/home/CommitteeSection';
 import MomentsSection from '../features/home/MomentsSection';
 
-export default function Home() {
-  useDocumentTitle(null);
+export default function HomePage() {
   return (
     <>
       <Hero />

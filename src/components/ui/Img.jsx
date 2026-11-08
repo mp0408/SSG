@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '../../lib/cn';
 
@@ -16,11 +18,12 @@ export default function Img({ className, loading = 'lazy', alt = '', onLoad, ...
       alt={alt}
       loading={loading}
       decoding="async"
+      data-loading={loaded ? undefined : ''}
       onLoad={(event) => {
         setLoaded(true);
         onLoad?.(event);
       }}
-      className={cn('transition-[opacity,transform] duration-700 ease-out', loaded ? 'opacity-100' : 'opacity-0', className)}
+      className={cn('transition-[opacity,transform] duration-500 ease-out', className)}
       {...props}
     />
   );

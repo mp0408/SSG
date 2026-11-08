@@ -2,7 +2,7 @@
 /node_modules
 
 # build output (Vercel builds from source)
-/dist
+/.next
 
 # local env overrides
 .env.local

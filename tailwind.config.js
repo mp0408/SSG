@@ -4,9 +4,11 @@
 // See src/styles/index.css for the light/dark values.
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
-export default {
-  content: ['./index.html', './src/**/*.{js,jsx}'],
+const config = {
+  content: ['./src/**/*.{js,jsx}'],
   darkMode: ['selector', '[data-theme="dark"]'],
+  // Touch screens never get stuck in a hover state.
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     container: { center: true },
     extend: {
@@ -25,16 +27,16 @@ export default {
         ball: token('ball'),
       },
       fontFamily: {
-        sans: ['Geist', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['Archivo', 'Impact', 'system-ui', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-        gujarati: ['"Noto Sans Gujarati"', 'sans-serif'],
+        sans: ['var(--font-geist)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        display: ['var(--font-archivo)', 'Impact', 'system-ui', 'sans-serif'],
+        gujarati: ['var(--font-gujarati)', 'sans-serif'],
       },
       fontSize: {
         '2xs': ['0.6875rem', { lineHeight: '1rem' }],
       },
       letterSpacing: {
-        label: '0.18em',
+        label: '0.14em',
       },
       borderRadius: {
         '4xl': '2rem',
@@ -44,23 +46,23 @@ export default {
       },
       boxShadow: {
         card: '0 1px 0 rgb(var(--ink) / 0.04) inset, 0 20px 40px -24px rgb(0 0 0 / 0.45)',
-        lift: '0 30px 60px -30px rgb(var(--brand) / 0.45)',
+        lift: '0 24px 48px -28px rgb(var(--glow) / 0.45)',
       },
       keyframes: {
-        marquee: { to: { transform: 'translateX(-100%)' } },
-        'marquee-reverse': { from: { transform: 'translateX(-100%)' }, to: { transform: 'translateX(0)' } },
+        marquee: { to: { transform: 'translate3d(-100%,0,0)' } },
+        'marquee-reverse': { from: { transform: 'translate3d(-100%,0,0)' }, to: { transform: 'translate3d(0,0,0)' } },
         ping: { '75%, 100%': { transform: 'scale(2.4)', opacity: '0' } },
-        shimmer: { to: { transform: 'translateX(100%)' } },
-        'fade-up': { from: { opacity: '0', transform: 'translateY(14px)' }, to: { opacity: '1', transform: 'none' } },
+        'fade-up': { from: { opacity: '0', transform: 'translate3d(0,14px,0)' }, to: { opacity: '1', transform: 'none' } },
       },
       animation: {
         marquee: 'marquee var(--marquee-duration, 40s) linear infinite',
         'marquee-reverse': 'marquee-reverse var(--marquee-duration, 40s) linear infinite',
         ping: 'ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite',
-        shimmer: 'shimmer 2.4s ease-in-out infinite',
-        'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'fade-up': 'fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards',
       },
     },
   },
   plugins: [],
 };
+
+export default config;

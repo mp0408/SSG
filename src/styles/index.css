@@ -3,94 +3,86 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   Theme tokens — RGB triplets so Tailwind can apply opacity.
+   Theme tokens: RGB triplets so Tailwind can apply opacity.
    Dark ("night match") is the default brand look.
    ───────────────────────────────────────────────────────────── */
 :root,
 [data-theme='dark'] {
-  --bg: 5 9 20;
-  --bg-2: 8 14 31;
-  --surface: 12 20 40;
-  --surface-2: 19 30 58;
-  --line: 31 44 76;
-  --ink: 236 241 255;
-  --ink-2: 163 177 210;
-  --ink-3: 108 123 160;
-  --brand: 47 107 255;
-  --brand-ink: 128 172 255;
-  --glow: 56 189 248;
-  --ball: 239 59 78;
+  --bg: 4 7 16;
+  --bg-2: 7 11 24;
+  --surface: 11 17 35;
+  --surface-2: 19 28 54;
+  --line: 38 53 92;
+  --ink: 238 243 255;
+  --ink-2: 170 184 216;
+  --ink-3: 128 142 178;
+  --brand: 44 100 250;
+  --brand-ink: 125 182 255;
+  --glow: 45 226 255;
+  --ball: 255 72 96;
 
   --logo-top: 77 141 255;
   --logo-bottom: 26 79 214;
   --logo-keyline: 255 255 255;
   --logo-keyline-width: 12;
 
-  --grain-opacity: 0.05;
   color-scheme: dark;
 }
 
 [data-theme='light'] {
-  --bg: 246 247 251;
-  --bg-2: 237 241 249;
+  --bg: 243 246 252;
+  --bg-2: 234 239 249;
   --surface: 255 255 255;
-  --surface-2: 241 244 250;
-  --line: 221 227 239;
+  --surface-2: 238 242 250;
+  --line: 208 217 234;
   --ink: 9 16 36;
-  --ink-2: 70 82 110;
-  --ink-3: 100 111 138;
+  --ink-2: 66 78 106;
+  --ink-3: 88 100 128;
   --brand: 29 78 216;
   --brand-ink: 29 78 216;
-  --glow: 2 132 199;
-  --ball: 214 40 57;
+  --glow: 3 118 178;
+  --ball: 208 34 56;
 
   --logo-top: 56 116 248;
   --logo-bottom: 21 66 200;
   --logo-keyline: 255 255 255;
   --logo-keyline-width: 0;
 
-  --grain-opacity: 0.035;
   color-scheme: light;
+}
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --header: 4rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header: 4.5rem;
+  }
 }
 
 @layer base {
   html {
     @apply bg-bg text-ink antialiased;
     font-family: theme('fontFamily.sans');
-    text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: calc(var(--header) + 1rem);
   }
 
   body {
-    @apply min-h-screen bg-bg;
-    font-feature-settings: 'ss01', 'cv11';
+    @apply flex min-h-[100dvh] flex-col bg-bg;
     overflow-x: clip;
   }
 
-  /* Fine film grain — static, GPU-cheap texture that keeps flat colour from looking digital. */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: var(--grain-opacity);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  #root {
-    @apply flex min-h-screen flex-col;
-  }
-
   ::selection {
-    background: rgb(var(--brand) / 0.35);
+    background: rgb(var(--glow) / 0.3);
     color: rgb(var(--ink));
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--brand-ink));
+    outline: 2px solid rgb(var(--glow));
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -98,16 +90,38 @@
   img {
     @apply select-none;
   }
+
+  /* Prevents one long word from pushing a phone layout sideways. */
+  h1,
+  h2,
+  h3,
+  p {
+    overflow-wrap: break-word;
+  }
 }
 
 @layer components {
-  /* Layout shell — 16px gutters on phones */
+  /* Layout shell: 16px gutters on phones */
   .shell {
-    @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1240px];
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 640px) {
+    .shell {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .shell {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .section {
-    @apply relative py-20 sm:py-28 lg:py-32;
+    @apply relative py-16 sm:py-24 lg:py-28;
   }
 
   /* ── Type roles ─────────────────────────────── */
@@ -117,25 +131,16 @@
     font-weight: 850;
     text-transform: uppercase;
     letter-spacing: -0.012em;
-    line-height: 0.9;
+    line-height: 0.92;
   }
 
   .t-label {
-    font-family: theme('fontFamily.display');
-    font-stretch: 118%;
-    font-weight: 600;
+    font-family: theme('fontFamily.mono');
+    font-weight: 500;
     font-size: 0.6875rem;
     line-height: 1rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-  }
-
-  .t-serif {
-    font-family: theme('fontFamily.serif');
-    font-style: italic;
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: -0.01em;
   }
 
   .t-numeric {
@@ -146,17 +151,63 @@
     letter-spacing: -0.02em;
   }
 
+  /* Plasma gradient for the accent words in headlines */
+  .t-accent {
+    background: linear-gradient(92deg, rgb(var(--glow)), rgb(var(--brand-ink)) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-right: 0.04em;
+  }
+
   /* ── Surfaces ───────────────────────────────── */
   .card {
-    @apply rounded-3xl border border-line/70 bg-surface;
+    @apply relative rounded-2xl border border-line/70;
+    background: linear-gradient(180deg, rgb(var(--surface)), rgb(var(--surface) / 0.72));
+  }
+  /* Lit top edge, like a panel catching the floodlights */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(var(--glow) / 0.55), transparent);
+    pointer-events: none;
+  }
+
+  /* HUD corner ticks (one layer, no extra DOM) */
+  .hud-ticks {
+    position: relative;
+  }
+  .hud-ticks::after {
+    --t: rgb(var(--glow) / 0.65);
+    content: '';
+    position: absolute;
+    inset: 7px;
+    pointer-events: none;
+    z-index: 2;
+    background:
+      linear-gradient(var(--t), var(--t)) 0 0 / 12px 1px,
+      linear-gradient(var(--t), var(--t)) 0 0 / 1px 12px,
+      linear-gradient(var(--t), var(--t)) 100% 0 / 12px 1px,
+      linear-gradient(var(--t), var(--t)) 100% 0 / 1px 12px,
+      linear-gradient(var(--t), var(--t)) 0 100% / 12px 1px,
+      linear-gradient(var(--t), var(--t)) 0 100% / 1px 12px,
+      linear-gradient(var(--t), var(--t)) 100% 100% / 12px 1px,
+      linear-gradient(var(--t), var(--t)) 100% 100% / 1px 12px;
+    background-repeat: no-repeat;
   }
 
   .card-interactive {
-    @apply transition-[transform,border-color,box-shadow] duration-500 ease-out;
+    @apply transition-[transform,border-color,box-shadow] duration-300 ease-out;
   }
   @media (hover: hover) {
     .card-interactive:hover {
-      @apply -translate-y-1 border-brand/40 shadow-lift;
+      @apply -translate-y-1 border-glow/50 shadow-lift;
     }
   }
   .card-interactive:active {
@@ -164,28 +215,131 @@
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/60 px-3 py-1 text-xs font-medium text-ink-2;
+    @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-surface/70 px-2.5 py-1 text-xs font-medium text-ink-2;
   }
 
-  .skeleton {
-    @apply relative overflow-hidden bg-surface-2;
+  /* ── Buttons: chamfered corners ─────────────── */
+  .btn {
+    --cut: 10px;
+    position: relative;
+    isolation: isolate;
+    clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
   }
-  .skeleton::after {
+  /* clip-path would cut off the keyboard focus ring */
+  .btn:focus-visible {
+    clip-path: none;
+  }
+  .btn-solid {
+    background: linear-gradient(100deg, rgb(var(--brand)), #1a4fd6);
+    color: #fff;
+  }
+  .btn-line {
+    background: rgb(var(--line));
+    color: rgb(var(--ink));
+  }
+  .btn-line::before {
     content: '';
-    @apply absolute inset-0 -translate-x-full animate-shimmer;
-    background: linear-gradient(90deg, transparent, rgb(var(--ink) / 0.05), transparent);
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    background: rgb(var(--surface));
+    transition: background-color 0.2s ease;
+    clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+  }
+  @media (hover: hover) {
+    .btn-line:hover::before {
+      background: rgb(var(--surface-2));
+    }
+  }
+
+  /* ── Grid texture for headers ───────────────── */
+  .hud-grid {
+    background-image:
+      linear-gradient(rgb(var(--line) / 0.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.32) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: center top;
+    mask-image: radial-gradient(70% 90% at 70% 0%, #000, transparent);
+    -webkit-mask-image: radial-gradient(70% 90% at 70% 0%, #000, transparent);
   }
 
   /* ── Marquee ────────────────────────────────── */
   .marquee {
-    @apply flex overflow-hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    --marquee-fade: rgb(var(--bg));
+    @apply relative flex overflow-hidden;
   }
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
+  /* Edge fades are plain gradients: cheaper than a mask over moving content. */
+  .marquee::before,
+  .marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 7%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--marquee-fade), transparent);
+  }
+  .marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--marquee-fade), transparent);
+  }
+  .marquee-track {
+    will-change: transform;
+  }
+  @media (hover: hover) {
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
   }
 
-  /* ── Hero ball slot (CSS ball shown only if WebGL is unavailable) ── */
+  /* ── Hero stage ─────────────────────────────── */
+  .hero-sky {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(90% 62% at 78% 22%, rgb(var(--brand) / 0.34), transparent 72%),
+      radial-gradient(60% 45% at 8% 0%, rgb(var(--glow) / 0.13), transparent 72%),
+      linear-gradient(180deg, rgb(var(--bg-2)), rgb(var(--bg)));
+  }
+
+  .hero-beam {
+    position: absolute;
+    top: -12%;
+    width: 42vmax;
+    height: 125%;
+    background: linear-gradient(180deg, rgb(var(--glow) / 0.17), transparent 78%);
+    clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+    transform-origin: 50% 0;
+    will-change: transform;
+    animation: beam-sway 11s ease-in-out infinite alternate;
+  }
+
+  /* Perspective floor: only the inner layer moves, on the compositor. */
+  .grid-floor {
+    position: absolute;
+    left: -45%;
+    right: -45%;
+    bottom: 0;
+    height: 44%;
+    overflow: hidden;
+    transform: perspective(420px) rotateX(64deg);
+    transform-origin: 50% 100%;
+  }
+  .grid-floor > i {
+    position: absolute;
+    inset: -72px 0 0;
+    background-image:
+      linear-gradient(rgb(var(--glow) / 0.26) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--glow) / 0.26) 1px, transparent 1px);
+    background-size: 72px 72px;
+    will-change: transform;
+    animation: floor-run 4s linear infinite;
+  }
+
   .ball-slot {
     position: relative;
     display: inline-block;
@@ -194,33 +348,103 @@
     height: 0.7em;
     border-radius: 9999px;
   }
-  .ball-slot::before,
-  .ball-slot::after {
+  /* Drawn in CSS first, so the ball is there before WebGL starts or if it can't. */
+  .ball-slot::before {
     content: '';
     position: absolute;
-    border-radius: 9999px;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  .ball-slot::before {
     inset: 0;
+    border-radius: 9999px;
     background: radial-gradient(circle at 34% 30%, #ff8f8f 0, #e0303f 24%, #a3121f 58%, #44050b 100%);
-    box-shadow:
-      inset -0.05em -0.07em 0.12em rgb(0 0 0 / 0.45),
-      0 0.08em 0.4em rgb(var(--glow) / 0.25);
+    box-shadow: inset -0.05em -0.07em 0.12em rgb(0 0 0 / 0.45);
+    transition: opacity 0.4s ease;
   }
-  .ball-slot::after {
-    left: -2%;
-    right: -2%;
-    top: 46%;
-    height: 8%;
-    border-top: 0.012em dashed #f4e7c8;
-    border-bottom: 0.012em dashed #f4e7c8;
-    transform: rotate(-24deg);
+  .ball-slot[data-gl='on']::before {
+    opacity: 0;
   }
-  [data-gl='fail'] .ball-slot::before,
-  [data-gl='fail'] .ball-slot::after {
+
+  .ball-orbit {
+    position: absolute;
+    inset: -13%;
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--glow) / 0.28);
+    border-top-color: rgb(var(--glow) / 0.9);
+    pointer-events: none;
+    will-change: transform;
+    animation: orbit-a 7s linear infinite;
+  }
+  .ball-orbit + .ball-orbit {
+    inset: -24%;
+    border-color: rgb(var(--brand-ink) / 0.18);
+    border-right-color: rgb(var(--brand-ink) / 0.75);
+    animation: orbit-b 11s linear infinite reverse;
+  }
+
+  /* ── Footer: a six over the rope ────────────── */
+  .six-x {
+    position: absolute;
+    left: 0;
+    bottom: 18%;
+    animation: six-x 6s linear infinite;
+    will-change: transform;
+  }
+  .six-y {
+    display: block;
+    animation: six-y 6s linear infinite;
+    will-change: transform;
+  }
+  .six-ball {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 34% 30%, #ff9a9a, #e0303f 45%, #7d0e19);
+    box-shadow: -16px 4px 0 -4px rgb(var(--glow) / 0.5), -32px 8px 0 -5px rgb(var(--glow) / 0.28);
+  }
+
+  /* ── Sheet / overlays: transform + opacity only ─ */
+  .sheet-backdrop {
+    opacity: 0;
+    transition: opacity 0.28s ease;
+  }
+  .sheet-backdrop[data-visible='true'] {
     opacity: 1;
+  }
+  .sheet-panel {
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.34s var(--ease-out);
+    will-change: transform;
+  }
+  .sheet-panel[data-visible='true'] {
+    transform: translate3d(0, 0, 0);
+  }
+  @media (min-width: 640px) {
+    .sheet-panel {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0) scale(0.98);
+      transition:
+        opacity 0.26s ease,
+        transform 0.3s var(--ease-out);
+    }
+    .sheet-panel[data-visible='true'] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .menu-panel {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+    transition:
+      opacity 0.24s ease,
+      transform 0.3s var(--ease-out);
+  }
+  .menu-panel[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  .menu-panel[data-visible='true'] li {
+    animation: rise 0.42s var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 38ms + 40ms);
   }
 }
 
@@ -240,7 +464,7 @@
   }
 
   .text-gradient-brand {
-    background: linear-gradient(180deg, rgb(var(--ink)) 20%, rgb(var(--brand-ink)) 130%);
+    background: linear-gradient(180deg, rgb(var(--ink)) 25%, rgb(var(--glow)) 125%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -248,7 +472,7 @@
 
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1.5px rgb(var(--ink) / 0.35);
+    -webkit-text-stroke: 1.5px rgb(var(--ink) / 0.3);
   }
 
   .bg-dots {
@@ -259,6 +483,116 @@
   .safe-bottom {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
+
+  /* Blur only where the GPU budget allows it: never on phones. */
+  @media (min-width: 1024px) and (hover: hover) {
+    .glass {
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
+  }
+
+  /* Entrance for content that is on screen at load */
+  .rise {
+    animation: rise 0.7s var(--ease-out) backwards;
+    animation-delay: var(--d, 0ms);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes floor-run {
+  to {
+    transform: translate3d(0, 72px, 0);
+  }
+}
+@keyframes beam-sway {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(7deg);
+  }
+}
+@keyframes orbit-a {
+  from {
+    transform: rotateX(72deg) rotateY(-14deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(72deg) rotateY(-14deg) rotateZ(360deg);
+  }
+}
+@keyframes orbit-b {
+  from {
+    transform: rotateX(66deg) rotateY(26deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(66deg) rotateY(26deg) rotateZ(360deg);
+  }
+}
+@keyframes six-x {
+  from {
+    transform: translate3d(-6vw, 0, 0);
+  }
+  to {
+    transform: translate3d(106vw, 0, 0);
+  }
+}
+@keyframes six-y {
+  0% {
+    transform: translate3d(0, 0, 0);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.5, 1);
+  }
+  50% {
+    transform: translate3d(0, -120px, 0);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.8, 0.3);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ── Scroll reveals ─────────────────────────────
+   One shared IntersectionObserver (MotionObserver.jsx) adds `.in`. Keyframes
+   use `backwards` fill so hover transforms still work after they finish.
+   `.js` is set before first paint, so content stays visible without JS. */
+.js [data-reveal]:not(.in),
+.js [data-stagger]:not(.in) > * {
+  opacity: 0;
+}
+[data-reveal].in {
+  animation: rise 0.6s var(--ease-out) backwards;
+  animation-delay: var(--d, 0ms);
+}
+[data-stagger].in > * {
+  animation: rise 0.55s var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * var(--gap, 70ms));
+}
+[data-stagger] > :nth-child(2) { --i: 1; }
+[data-stagger] > :nth-child(3) { --i: 2; }
+[data-stagger] > :nth-child(4) { --i: 3; }
+[data-stagger] > :nth-child(5) { --i: 4; }
+[data-stagger] > :nth-child(6) { --i: 5; }
+[data-stagger] > :nth-child(7) { --i: 6; }
+[data-stagger] > :nth-child(n + 8) { --i: 7; }
+
+/* Looping animations stop while their section is off screen. */
+.is-offscreen,
+.is-offscreen * {
+  animation-play-state: paused !important;
+}
+
+/* Image fade-in, only once JS can finish it */
+.js img[data-loading] {
+  opacity: 0;
 }
 
 /* Logo keyline (white outline on dark, none on light) */
@@ -300,6 +634,7 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;

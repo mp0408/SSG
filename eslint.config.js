@@ -1,29 +1,12 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 
 export default [
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['.next/**', 'node_modules/**', 'public/**'] },
+  ...nextCoreWebVitals,
   {
-    files: ['**/*.{js,jsx,mjs}'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
-      globals: { ...globals.browser },
-      parserOptions: { ecmaFeatures: { jsx: true } },
-    },
-    plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
     rules: {
-      ...js.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
-      // ESLint 9 doesn't see JSX member usage (<motion.div>), so `motion` is allowed explicitly.
-      'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)', argsIgnorePattern: '^_' }],
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      // Images are pre-optimised to WebP by scripts/optimize-images.mjs and served with srcSet.
+      '@next/next/no-img-element': 'off',
     },
-  },
-  {
-    files: ['scripts/**/*.{js,mjs}', '*.config.js'],
-    languageOptions: { globals: { ...globals.node } },
   },
 ];

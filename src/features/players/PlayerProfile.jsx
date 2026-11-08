@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { categoryLabel, playerPhoto } from '../../lib/directory';
 import { downloadVCard, instagramHandle, shareLink, telHref, whatsappHref } from '../../lib/contact';
 import { formatPhone, initials } from '../../lib/format';
@@ -9,7 +11,7 @@ import Img from '../../components/ui/Img';
 
 function Action({ href, onClick, icon, label, sub, primary, external, className }) {
   const classes = cn(
-    'flex min-h-[3.5rem] items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-300 active:scale-[0.98]',
+    'flex min-h-[3.5rem] items-center gap-3 rounded-xl border px-3.5 py-3 text-left transition-[background-color,border-color,transform] duration-300 active:scale-[0.98]',
     primary ? 'border-transparent bg-brand text-white hover:bg-brand/90' : 'border-line bg-surface-2/60 text-ink hover:border-ink-3/50',
     className,
   );
@@ -85,7 +87,7 @@ export default function PlayerProfile({ player, titleId }) {
 
         <div className="relative -mt-20 px-5 sm:px-7">
           <div className="mb-3 flex flex-wrap gap-1.5">
-            {player.category && <span className="chip bg-surface/80 backdrop-blur">{categoryLabel(player.category)}</span>}
+            {player.category && <span className="chip bg-surface">{categoryLabel(player.category)}</span>}
             {player.isCaptain && (
               <span className="chip border-amber-400/30 bg-amber-400/10 text-amber-500 dark:text-amber-300">
                 <Icon name="crown" className="size-3.5" /> Captain
@@ -102,7 +104,7 @@ export default function PlayerProfile({ player, titleId }) {
               </span>
             )}
           </div>
-          <h2 id={titleId} className="t-display text-[clamp(2.6rem,11vw,3.75rem)] text-ink">
+          <h2 id={titleId} className="t-display text-[clamp(2.25rem,11vw,3.75rem)] text-ink">
             {player.name}
           </h2>
           <p className="mt-2 flex items-center gap-2 text-ink-2">
@@ -166,7 +168,7 @@ export default function PlayerProfile({ player, titleId }) {
                         {entry.year ? ` · ${entry.year}` : ''}
                       </p>
                       {entry.team && (
-                        <Link to={`/teams?season=${entry.season}`} className="mt-0.5 block font-semibold text-ink hover:underline">
+                        <Link href={`/teams?season=${entry.season}`} className="mt-0.5 block font-semibold text-ink hover:underline">
                           {entry.team.name}
                           {entry.isCaptain && <span className="font-normal text-ink-2"> · Captain</span>}
                         </Link>

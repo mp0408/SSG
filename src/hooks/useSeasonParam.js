@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+'use client';
+
 import { getSeason } from '../data/seasons';
+import { useUrlParam } from './useUrlParam';
 
 /**
  * Selected season, synced to `?season=N` so a view can be shared.
@@ -8,22 +9,8 @@ import { getSeason } from '../data/seasons';
  * or the season isn't in `available`.
  */
 export function useSeasonParam(available, fallback) {
-  const [params, setParams] = useSearchParams();
-  const fromUrl = getSeason(params.get('season'));
+  const [param, setSeason] = useUrlParam('season');
+  const fromUrl = param ? getSeason(param) : null;
   const season = fromUrl && available.includes(fromUrl) ? fromUrl : fallback;
-
-  const setSeason = useCallback(
-    (number) =>
-      setParams(
-        (prev) => {
-          const next = new URLSearchParams(prev);
-          next.set('season', String(number));
-          return next;
-        },
-        { replace: true, preventScrollReset: true },
-      ),
-    [setParams],
-  );
-
   return [season, setSeason];
 }

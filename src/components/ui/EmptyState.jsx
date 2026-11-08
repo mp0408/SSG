@@ -3,10 +3,10 @@ import Icon from './Icon';
 
 export default function EmptyState({ icon = 'spark', title, description, children, className }) {
   return (
-    <div className={cn('card relative overflow-hidden px-6 py-14 text-center sm:py-20', className)}>
+    <div className={cn('card overflow-hidden px-5 py-12 text-center sm:py-20', className)}>
       <div aria-hidden className="bg-dots absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_40%,#000,transparent)]" />
       <div className="relative mx-auto max-w-md">
-        <span className="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl border border-line bg-surface-2 text-brand-ink">
+        <span className="mx-auto mb-6 flex size-14 items-center justify-center rounded-xl border border-line bg-surface-2 text-glow">
           <Icon name={icon} className="size-6" />
         </span>
         <h3 className="t-display text-3xl text-ink sm:text-4xl">{title}</h3>

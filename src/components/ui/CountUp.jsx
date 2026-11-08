@@ -1,36 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+'use client';
 
-/** Counts from 0 to `value` once visible. Tiny replacement for react-countup. */
-export default function CountUp({ value, duration = 1.6, pad = 0, suffix = '', className }) {
+import { useEffect, useRef } from 'react';
+
+/** Counts from 0 to `value` once visible. Writes the text directly, so React never re-renders per frame. */
+export default function CountUp({ value, duration = 1.3, pad = 0, suffix = '', className }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
-  const reduce = useReducedMotion();
-  const [current, setCurrent] = useState(0);
+  const format = (n) => `${String(n).padStart(pad, '0')}${suffix}`;
 
   useEffect(() => {
-    if (!inView) return undefined;
-    if (reduce) {
-      setCurrent(value);
-      return undefined;
-    }
-    let frame;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / (duration * 1000));
-      const eased = 1 - Math.pow(1 - t, 4);
-      setCurrent(Math.round(value * eased));
-      if (t < 1) frame = requestAnimationFrame(tick);
+    const node = ref.current;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const text = (n) => `${String(n).padStart(pad, '0')}${suffix}`;
+    let frame = 0;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / (duration * 1000));
+        node.textContent = text(Math.round(value * (1 - Math.pow(1 - t, 4))));
+        if (t < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    });
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
     };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, value, duration, reduce]);
+  }, [value, duration, pad, suffix]);
 
   return (
-    <span ref={ref} className={className} aria-label={`${value}${suffix}`}>
-      <span aria-hidden>
-        {String(current).padStart(pad, '0')}
-        {suffix}
+    <span className={className} aria-label={`${value}${suffix}`}>
+      <span ref={ref} aria-hidden>
+        {format(value)}
       </span>
     </span>
   );

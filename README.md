@@ -2,13 +2,13 @@
 
 Official site of the SSG Premier League, organised by Satva Shiv Gold Yuva Mandal in Ahmedabad. It has a season hub, a players and business network, teams, sponsors, a gallery and the league's story.
 
-**Stack:** React 19 · Vite 6 · Tailwind CSS 3 · Framer Motion · raw WebGL (hero) · deployed on Vercel.
+**Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS 3 · CSS-only animation · raw WebGL (hero ball) · deployed on Vercel.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
-npm run build      # production build → dist/
-npm run preview    # serve the build locally
+npm run dev        # http://localhost:3000
+npm run build      # production build → .next/
+npm run start      # serve the build locally
 npm run lint
 ```
 
@@ -29,13 +29,17 @@ src/
     brand/                Vector logo (traced from the official mark).
     layout/               Navbar, mobile menu, footer, site shell.
     ui/                   Design-system primitives (Button, Sheet, Reveal, Marquee…).
-    webgl/                Hero shader and canvas.
-  features/<area>/        Page-specific components (home, players, teams, sponsors, gallery).
-  pages/                  One file per route. Every page except Home is lazy-loaded.
-  styles/index.css        Theme tokens (dark and light) and type roles.
+    webgl/                Hero ball shader and canvas.
+  features/<area>/        Page-specific components (home, players, teams, sponsors, gallery, about).
+  app/                    One folder per route. Pages are statically generated at build time.
+  styles/index.css        Theme tokens (dark and light), type roles and all animation.
 scripts/optimize-images.mjs   Image pipeline (sharp).
 public/images/            Optimised WebP assets only.
 ```
+
+## Animation
+
+To keep phones smooth, animation is limited to `transform` and `opacity` in CSS. Add `<Reveal>` or `<Stagger>` for scroll entrances: one shared observer in `components/layout/MotionObserver.jsx` runs them all and pauses looping animation off screen. Avoid scroll listeners, per-frame React state, and `backdrop-filter` on phones.
 
 ## Adding a new season
 

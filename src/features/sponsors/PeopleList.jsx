@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getPlayer } from '../../lib/directory';
 import { cn } from '../../lib/cn';
 
@@ -14,7 +14,7 @@ export default function PeopleList({ people, className, size = 'text-sm' }) {
             {index > 0 && <span className="text-ink-3"> · </span>}
             {player ? (
               <Link
-                to={`/players/${player.slug}`}
+                href={`/players/${player.slug}`}
                 className="text-ink underline decoration-line decoration-1 underline-offset-4 transition-colors hover:decoration-brand-ink"
                 onClick={(event) => event.stopPropagation()}
               >

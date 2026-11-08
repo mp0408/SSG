@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getPlayer, playerPhoto } from '../../lib/directory';
 import Avatar from '../../components/ui/Avatar';
 import Icon from '../../components/ui/Icon';
@@ -15,12 +15,12 @@ export default function SquadView({ team, season, titleId }) {
       <header className="relative overflow-hidden px-5 pb-6 pt-12 sm:px-7">
         <div aria-hidden className="absolute inset-0" style={{ background: `linear-gradient(180deg, ${team.color}33, transparent 85%)` }} />
         <div className="relative flex items-center gap-5">
-          <img src={team.crest} alt="" className="size-24 shrink-0 object-contain drop-shadow-xl" />
+          <img src={team.crest} alt="" className="size-20 shrink-0 object-contain sm:size-24" />
           <div className="min-w-0">
             <p className="t-label text-ink-3">
               Season {season.number} · {season.year}
             </p>
-            <h2 id={titleId} className="t-display mt-2 text-[2.5rem] text-ink">
+            <h2 id={titleId} className="t-display mt-2 text-[clamp(2rem,9vw,2.5rem)] text-ink">
               {team.name}
             </h2>
           </div>
@@ -44,7 +44,7 @@ export default function SquadView({ team, season, titleId }) {
           const captain = player.id === team.captainId;
           return (
             <li key={player.id}>
-              <Link to={`/players/${player.slug}`} className="group flex items-center gap-4 px-5 py-3 transition-colors hover:bg-surface-2/60 sm:px-7">
+              <Link href={`/players/${player.slug}`} className="group flex items-center gap-4 px-5 py-3 transition-colors hover:bg-surface-2/60 sm:px-7">
                 <Avatar src={playerPhoto(player, 'xs')} name={player.name} className="size-12 text-sm" rounded="rounded-2xl" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-medium text-ink">
